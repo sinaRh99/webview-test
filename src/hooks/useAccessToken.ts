@@ -23,7 +23,7 @@ const useAccessToken = () => {
 
   return {
     access: accessToken,
-    refreshToken: refreshToken,
+    refresh: refreshToken,
   };
 };
 

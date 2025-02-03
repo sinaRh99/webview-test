@@ -27,9 +27,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const login = (newToken?: string) => {
-    //   Cookies.set("authToken", newToken, { expires: 7, secure: true, sameSite: "Strict" });
-    if (newToken) setToken(newToken);
-    else logout();
+    if (newToken) {
+      setToken(newToken);
+      Cookies.set("access", newToken);
+    } else logout();
   };
 
   const logout = () => {

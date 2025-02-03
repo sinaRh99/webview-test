@@ -22,7 +22,7 @@ const useAccessToken = () => {
     }, 1000); // Check every second (adjust as needed)
 
     return () => clearInterval(interval);
-  }, [accessToken, refreshToken]);
+  }, [accessToken, refreshToken, login]);
 
   return {
     access: accessToken,

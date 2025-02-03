@@ -29,8 +29,10 @@ function Profile() {
         );
         setProfileData(response.data);
         setIsLoading(false);
-      } catch (err: any) {
-        setError(err?.status);
+      } catch (err: unknown) {
+        if (!!err && typeof err === "object" && "status" in err)
+          setError(err.status as string);
+        else setError("i don't know what error is this");
         setIsLoading(false);
       }
     };

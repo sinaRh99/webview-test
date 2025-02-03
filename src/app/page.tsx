@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-import Cookies from "js-cookie";
 import { useAccessToken } from "@/hooks";
 
 export default function Home() {

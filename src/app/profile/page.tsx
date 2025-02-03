@@ -4,6 +4,7 @@ import { useAuth } from "@/context/AuthContext";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import LoginStatus from "@/components/LoginStatus";
+import Link from "next/link";
 
 function Profile() {
   const { token } = useAuth();
@@ -33,9 +34,16 @@ function Profile() {
     <div className="p-4">
       <LoginStatus />
 
-      <div className="text-center text-3xl font-black text-purple-500">
+      <div className="text-center text-xl font-black text-purple-500 mt-7">
         {isLoading ? "Loading..." : profileData?.email}
       </div>
+
+      <Link
+        href="/"
+        className="w-full h-16 rounded-xl flex items-center justify-center text-xl font-bold bg-violet-400 text-violet-900 mt-7"
+      >
+        Back to home
+      </Link>
     </div>
   );
 }

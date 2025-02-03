@@ -6,6 +6,7 @@ import FormField from "./FormField";
 import CustomButton from "./CustomButton";
 import { useAuth } from "@/context/AuthContext";
 import LoginStatus from "@/components/LoginStatus";
+import Link from "next/link";
 
 const API_URL = "https://api-dev.sendbypass.com/v1/login/";
 
@@ -47,6 +48,12 @@ export default function Login() {
         containerStyles="mt-7 w-full"
         isLoading={isLoading}
       />
+      <Link
+        href="/"
+        className="w-full h-16 rounded-xl flex items-center justify-center text-xl font-bold bg-violet-400 text-violet-900 mt-7"
+      >
+        Back to home
+      </Link>
     </div>
   );
 }

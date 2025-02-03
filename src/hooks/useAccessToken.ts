@@ -14,7 +14,7 @@ const useAccessToken = () => {
       const newAccessToken = Cookies.get("access");
       const newRefreshToken = Cookies.get("refresh");
       if (newAccessToken !== accessToken) {
-        // setAccessToken(newAccessToken || "");
+        setAccessToken(newAccessToken || "");
         login(newAccessToken);
       }
       if (newRefreshToken !== refreshToken)

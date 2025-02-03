@@ -15,6 +15,7 @@ function Profile() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setError(false);
     const getProfile = async () => {
       try {
         setIsLoading(true);
@@ -33,7 +34,8 @@ function Profile() {
         setIsLoading(false);
       }
     };
-    getProfile();
+    if (token) getProfile();
+    else setError(true);
   }, [token]);
 
   return (

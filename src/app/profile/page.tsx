@@ -11,11 +11,11 @@ function Profile() {
   const [profileData, setProfileData] = useState<{ email: string } | null>(
     null
   );
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    setError(false);
+    setError("");
     const getProfile = async () => {
       try {
         setIsLoading(true);
@@ -29,13 +29,13 @@ function Profile() {
         );
         setProfileData(response.data);
         setIsLoading(false);
-      } catch {
-        setError(true);
+      } catch (err: any) {
+        setError(err?.status);
         setIsLoading(false);
       }
     };
     if (token) getProfile();
-    else setError(true);
+    else setError("no token provided");
   }, [token]);
 
   return (

@@ -9,9 +9,11 @@ function Profile() {
   const [profileData, setProfileData] = useState<{ email: string } | null>(
     null
   );
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const getProfile = async () => {
+      setIsLoading(true);
       const response = await axios.get(
         "https://api-dev.sendbypass.com/v1/profile/",
         {
@@ -21,6 +23,7 @@ function Profile() {
         }
       );
       setProfileData(response.data);
+      setIsLoading(false);
     };
     getProfile();
   }, []);
@@ -36,8 +39,9 @@ function Profile() {
       >
         {isAuthenticated ? "User is signed in" : "User is not signed in"}
       </div>
+
       <div className="text-center text-3xl font-black text-purple-500">
-        {profileData?.email}
+        {isLoading ? "Loading..." : profileData?.email}
       </div>
     </div>
   );

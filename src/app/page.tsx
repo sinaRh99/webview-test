@@ -1,21 +1,31 @@
-"use client";
+'use client';
 
-import LoginStatus from "@/components/LoginStatus";
-import { useAuth } from "@/context/AuthContext";
-import Link from "next/link";
+import LoginStatus from '@/components/LoginStatus';
+import { useAuth } from '@/context/AuthContext';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export default function Home() {
   const { logout } = useAuth();
+  const router = useRouter();
+
+  function handleWebviewCheck() {
+    // @ts-expect-error ReactNativeWebView is not part of window object but we have it here
+    if (window.ReactNativeWebView)
+      // @ts-expect-error ReactNativeWebView is not part of window object but we have it here
+      window?.ReactNativeWebView?.postMessage('LOGIN');
+    else router.push('/login');
+  }
 
   return (
     <div className="p-4">
       <LoginStatus />
-      <Link
-        href="/login"
+      <div
+        onClick={handleWebviewCheck}
         className="w-full h-16 rounded-xl flex items-center justify-center text-xl font-bold bg-blue-400 text-blue-900 mt-7"
       >
         Sign In
-      </Link>
+      </div>
       <Link
         href="/profile"
         className="w-full h-16 rounded-xl flex items-center justify-center text-xl font-bold bg-violet-400 text-violet-900 mt-7"

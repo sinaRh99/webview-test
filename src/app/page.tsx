@@ -3,7 +3,8 @@
 import LoginStatus from '@/components/LoginStatus';
 import { useAuth } from '@/context/AuthContext';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/router';
 
 export default function Home() {
   const { logout } = useAuth();

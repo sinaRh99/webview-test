@@ -48,7 +48,7 @@ function Profile() {
       </div>
       {error && (
         <div className="text-center text-xl font-black text-rose-500 mt-7">
-          error : {token}
+          error : {error}
         </div>
       )}
       <Link

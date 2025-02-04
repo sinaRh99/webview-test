@@ -41,6 +41,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const logout = () => {
     Cookies.remove('access');
+    // @ts-expect-error ReactNativeWebView is not part of window object but we have it here
+    window?.ReactNativeWebView?.postMessage('TOKEN_EXPIRED');
     setToken('');
   };
 

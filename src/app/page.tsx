@@ -19,7 +19,7 @@ export default function Home() {
   }
 
   function handleOpenApp() {
-    const deepLinkUrl = `sendbypass://main?message=redirected`;
+    const deepLinkUrl = `sendByPass://main?message=redirected`;
     window.location.href = deepLinkUrl;
   }
 

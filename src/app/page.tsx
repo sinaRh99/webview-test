@@ -19,7 +19,7 @@ export default function Home() {
   }
 
   function handleOpenApp() {
-    const deepLinkUrl = `sendByPass://main?message=redirected`;
+    const deepLinkUrl = `sendbypass://main?message=redirected`;
     window.location.href = deepLinkUrl;
   }
 
@@ -44,12 +44,12 @@ export default function Home() {
       >
         sign out
       </div>
-      <div
+      <button
         onClick={handleOpenApp}
         className="w-full h-16 rounded-xl flex items-center justify-center text-xl font-bold bg-teal-400 text-teal-900 mt-7"
       >
         open app
-      </div>
+      </button>
     </div>
   );
 }

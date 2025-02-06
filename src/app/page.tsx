@@ -19,7 +19,7 @@ export default function Home() {
   }
 
   function handleOpenApp() {
-    const deepLinkUrl = `exp://192.168.77.151:8081?message=redirected`;
+    const deepLinkUrl = `app://sendbypass?message=redirected`;
     window.location.href = deepLinkUrl;
   }
 

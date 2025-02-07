@@ -21,8 +21,8 @@ export default function Login() {
   async function handleSubmit() {
     setIsLoading(true);
     const response = await axios.post(API_URL, signInForm);
-    // const deepLinkUrl = `sendbypass://main?token=${response.data.access}`;
-    const deepLinkUrl = `exp://192.168.77.151:8081/--/main?token=${response.data.access}`;
+    const deepLinkUrl = `sendbypass://main?token=${response.data.access}`;
+    //const deepLinkUrl = `exp://192.168.77.151:8081/--/main?token=${response.data.access}`;
     window.location.href = deepLinkUrl;
 
     login(response.data.access);

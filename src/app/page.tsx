@@ -18,11 +18,6 @@ export default function Home() {
     else router.push('/login');
   }
 
-  function handleOpenApp() {
-    const deepLinkUrl = `sendbypass://main?message=redirected`;
-    window.location.href = deepLinkUrl;
-  }
-
   return (
     <div className="p-4">
       <LoginStatus />
@@ -44,12 +39,6 @@ export default function Home() {
       >
         sign out
       </div>
-      <button
-        onClick={handleOpenApp}
-        className="w-full h-16 rounded-xl flex items-center justify-center text-xl font-bold bg-teal-400 text-teal-900 mt-7"
-      >
-        open app
-      </button>
     </div>
   );
 }

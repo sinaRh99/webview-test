@@ -1,27 +1,32 @@
-"use client";
+'use client';
 
-import axios from "axios";
-import React, { useState } from "react";
-import FormField from "./FormField";
-import CustomButton from "./CustomButton";
-import { useAuth } from "@/context/AuthContext";
-import LoginStatus from "@/components/LoginStatus";
-import Link from "next/link";
+import axios from 'axios';
+import React, { useState } from 'react';
+import FormField from './FormField';
+import CustomButton from './CustomButton';
+import { useAuth } from '@/context/AuthContext';
+import LoginStatus from '@/components/LoginStatus';
+import Link from 'next/link';
 
-const API_URL = "https://api-dev.sendbypass.com/v1/login/";
+const API_URL = 'https://api-dev.sendbypass.com/v1/login/';
 
 export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const [signInForm, setSignInForm] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
   const { login } = useAuth();
 
   async function handleSubmit() {
     setIsLoading(true);
     const response = await axios.post(API_URL, signInForm);
+    // const deepLinkUrl = `sendbypass://main?token=${response.data.access}`;
+    const deepLinkUrl = `exp://192.168.77.151:8081/--/main?token=${response.data.access}`;
+    window.location.href = deepLinkUrl;
+
     login(response.data.access);
+
     setIsLoading(false);
   }
 
@@ -33,13 +38,13 @@ export default function Login() {
       <FormField
         label="Email"
         value={signInForm.email}
-        handleChangeText={(e) => setSignInForm({ ...signInForm, email: e })}
+        handleChangeText={e => setSignInForm({ ...signInForm, email: e })}
         className="mt-7"
       />
       <FormField
         label="Password"
         value={signInForm.password}
-        handleChangeText={(e) => setSignInForm({ ...signInForm, password: e })}
+        handleChangeText={e => setSignInForm({ ...signInForm, password: e })}
         className="mt-7"
       />
       <CustomButton
